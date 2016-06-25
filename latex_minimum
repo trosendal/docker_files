@@ -1,0 +1,11 @@
+# This is a comment
+FROM ubuntu:16.04
+MAINTAINER Thomas Rosendal <thomas.rosendal@sva.se>
+RUN apt-get update && apt-get install -y wget xzdec
+RUN apt-get update && apt-get install -y texlive-latex-base
+RUN apt-get update && apt-get install -y software-properties-common && \
+apt-get install -y apt-transport-https && \
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
+add-apt-repository "deb https://cran.rstudio.com/bin/linux/ubuntu trusty/" && \
+apt-get update && apt-get install -y r-base && apt-get install -y r-base-dev
+RUN tlmgr init-usertree && tlmgr install fontspec
